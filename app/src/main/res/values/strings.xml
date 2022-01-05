@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">rdc-android-interview-sandbox</string>
+    <string name="main_image">Main Image</string>
 </resources>
