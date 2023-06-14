@@ -1,4 +1,4 @@
-package com.sjani.rdc_android_interview_sandbox.network
+package com.move.rdc_android_interview_sandbox.network
 
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory

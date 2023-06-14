@@ -1,4 +1,4 @@
-package com.sjani.rdc_android_interview_sandbox.models
+package com.move.rdc_android_interview_sandbox.models
 
 data class Address (
     var city: String,

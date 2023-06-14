@@ -1,8 +1,8 @@
-package com.sjani.rdc_android_interview_sandbox.util
+package com.move.rdc_android_interview_sandbox.util
 
-import com.sjani.rdc_android_interview_sandbox.models.Address
-import com.sjani.rdc_android_interview_sandbox.models.Photo
-import com.sjani.rdc_android_interview_sandbox.models.Property
+import com.move.rdc_android_interview_sandbox.models.Address
+import com.move.rdc_android_interview_sandbox.models.Photo
+import com.move.rdc_android_interview_sandbox.models.Property
 
 
 val cities: List<String> = listOf(

@@ -1,4 +1,4 @@
-package com.sjani.rdc_android_interview_sandbox.util
+package com.move.rdc_android_interview_sandbox.util
 
 import java.text.NumberFormat
 

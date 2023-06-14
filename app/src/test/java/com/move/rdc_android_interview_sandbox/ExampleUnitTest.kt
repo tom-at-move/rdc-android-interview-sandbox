@@ -1,8 +1,7 @@
-package com.sjani.rdc_android_interview_sandbox
+package com.move.rdc_android_interview_sandbox
 
+import org.junit.Assert.assertEquals
 import org.junit.Test
-
-import org.junit.Assert.*
 
 /**
  * Example local unit test, which will execute on the development machine (host).

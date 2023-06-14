@@ -1,12 +1,11 @@
-package com.sjani.rdc_android_interview_sandbox
+package com.move.rdc_android_interview_sandbox
 
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.sjani.rdc_android_interview_sandbox.models.Property
-import java.util.*
+import com.move.rdc_android_interview_sandbox.models.Property
 
 class MainListAdapter(private val context: Context) : RecyclerView.Adapter<MainListAdapter.ListItemHolder>() {
     private var properties: List<Property> = ArrayList()

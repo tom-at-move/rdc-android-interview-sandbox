@@ -1,6 +1,6 @@
-package com.sjani.rdc_android_interview_sandbox.network
+package com.move.rdc_android_interview_sandbox.network
 
-import com.sjani.rdc_android_interview_sandbox.models.PropertyResponse
+import com.move.rdc_android_interview_sandbox.models.PropertyResponse
 import retrofit2.Response
 import retrofit2.http.GET
 

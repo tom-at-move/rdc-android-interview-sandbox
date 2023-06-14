@@ -1,8 +1,8 @@
-package com.sjani.rdc_android_interview_sandbox
+package com.move.rdc_android_interview_sandbox
 
 import androidx.lifecycle.ViewModel
-import com.sjani.rdc_android_interview_sandbox.models.Property
-import com.sjani.rdc_android_interview_sandbox.util.getTestList
+import com.move.rdc_android_interview_sandbox.models.Property
+import com.move.rdc_android_interview_sandbox.util.getTestList
 
 class MainViewModel() : ViewModel() {
 

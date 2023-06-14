@@ -1,11 +1,11 @@
-package com.sjani.rdc_android_interview_sandbox
+package com.move.rdc_android_interview_sandbox
 
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.sjani.rdc_android_interview_sandbox.models.Property
+import com.move.rdc_android_interview_sandbox.models.Property
 
 class MainActivity : AppCompatActivity() {
 
