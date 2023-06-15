@@ -1,9 +1,5 @@
 package com.move.rdc_android_interview_sandbox.util
 
-import com.move.rdc_android_interview_sandbox.models.Address
-import com.move.rdc_android_interview_sandbox.models.Photo
-import com.move.rdc_android_interview_sandbox.models.Property
-
 
 val cities: List<String> = listOf(
     "Seattle",
@@ -55,8 +51,8 @@ val imageLinks: List<String> = listOf(
     "https://ap.rdcpix.com/1134949108/7c588c8945227e78b5d6fdc24585f55dl-m1x.jpg"
 )
 
-fun getTestList(): ArrayList<Property> {
-    val arr: ArrayList<Property> = ArrayList(5)
+fun getTestList(): ArrayList<com.move.rdc_android_interview_sandbox.data.models.Property> {
+    val arr: ArrayList<com.move.rdc_android_interview_sandbox.data.models.Property> = ArrayList(5)
 
     repeat((0..5).count()) {
         arr += getProperty()
@@ -65,22 +61,33 @@ fun getTestList(): ArrayList<Property> {
     return arr
 }
 
-private fun getProperty(): Property {
-    val property = Property(getAddress(),(800000..10000000).random(),getPhotos())
+private fun getProperty(): com.move.rdc_android_interview_sandbox.data.models.Property {
+    val property = com.move.rdc_android_interview_sandbox.data.models.Property(
+        getAddress(),
+        (800000..10000000).random(),
+        getPhotos()
+    )
     return property
 }
 
-private fun getPhotos(): List<Photo>? {
-    val photo = Photo("https://ap.rdcpix.com/3095123326/e991bb937b1be22c1d45c124e5fd73bel-m0x.jpg")
+private fun getPhotos(): List<com.move.rdc_android_interview_sandbox.data.models.Photo>? {
+    val photo =
+        com.move.rdc_android_interview_sandbox.data.models.Photo("https://ap.rdcpix.com/3095123326/e991bb937b1be22c1d45c124e5fd73bel-m0x.jpg")
     return listOf(photo)
 }
 
-private fun getAddress(): Address {
-    val address = Address(line = lines.random(),city = cities.random(), state = states.random(),postalCode = "", stateCode = "")
+private fun getAddress(): com.move.rdc_android_interview_sandbox.data.models.Address {
+    val address = com.move.rdc_android_interview_sandbox.data.models.Address(
+        line = lines.random(),
+        city = cities.random(),
+        state = states.random(),
+        postalCode = "",
+        stateCode = ""
+    )
     return address
 }
 
-fun presentableAddress(address: Address?): String {
+fun presentableAddress(address: com.move.rdc_android_interview_sandbox.data.models.Address?): String {
     return if (address != null) {
         listOfNotNull(address.line, address.city, address.state).joinToString()
     } else {
@@ -97,7 +104,7 @@ fun presentablePrice(price: Int?): String {
     }
 }
 
-fun singlePhoto(photos: List<Photo>?): String {
+fun singlePhoto(photos: List<com.move.rdc_android_interview_sandbox.data.models.Photo>?): String {
     return if (!photos.isNullOrEmpty()) {
         photos.firstOrNull()?.href ?: ""
     } else {
