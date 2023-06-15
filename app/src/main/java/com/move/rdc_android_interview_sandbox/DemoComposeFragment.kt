@@ -7,7 +7,6 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Button
 import androidx.compose.material3.CircularProgressIndicator
-import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Snackbar
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -28,10 +27,6 @@ class DemoComposeFragment : ComposeFragmentHarness() {
     @Composable
     override fun ComposeViewBinder() {
 
-        Scaffold() {
-
-        }
-
         Column(
             modifier = Modifier.fillMaxSize()
         ) {
@@ -43,6 +38,16 @@ class DemoComposeFragment : ComposeFragmentHarness() {
             ) {
                 Text(
                     text="Sample API Call"
+                )
+            }
+
+            Button(
+                onClick = {
+                    vm.onNavigateButtonPress()
+                }
+            ) {
+                Text(
+                    text="Sample Navigation"
                 )
             }
 

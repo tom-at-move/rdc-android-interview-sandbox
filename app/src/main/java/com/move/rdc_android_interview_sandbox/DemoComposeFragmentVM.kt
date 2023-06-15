@@ -41,11 +41,14 @@ class DemoComposeFragmentVM @Inject constructor(
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
                 propertyRepo.syncProperties()
-
             }
         }
 
-        navigator.navToDestination("", "")
+        navigator.buildFragmentDestinationByTag("", "")
+    }
+
+    fun onNavigateButtonPress() {
+        navigator.navigateToTarget(NavigationTarget.PropertyFragment, "any-payload-here")
     }
 
 
