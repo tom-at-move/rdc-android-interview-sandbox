@@ -4,7 +4,10 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.move.rdc_android_interview_sandbox.databinding.ActivitySelectionBinding
+import com.move.rdc_android_interview_sandbox.demo_fragment_activity.DemoFragmentActivity
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class SelectionActivity: AppCompatActivity() {
 
     private lateinit var binding: ActivitySelectionBinding

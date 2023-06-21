@@ -2,6 +2,8 @@ package com.move.rdc_android_interview_sandbox
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.move.rdc_android_interview_sandbox.common.ui.NavigationTarget
+import com.move.rdc_android_interview_sandbox.common.ui.RDCNavigator
 import com.move.rdc_android_interview_sandbox.data.db.entities.PropertyEntity
 import com.move.rdc_android_interview_sandbox.data.repos.PropertyRepo
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -17,7 +19,7 @@ import javax.inject.Inject
 @HiltViewModel
 class DemoComposeFragmentVM @Inject constructor(
     private val propertyRepo: PropertyRepo,
-    private val navigator: Navigator
+    private val navigator: RDCNavigator
 ) : ViewModel() {
 
     private val _viewStateFlow = MutableStateFlow<ViewState>(ViewState.Empty)
@@ -44,11 +46,12 @@ class DemoComposeFragmentVM @Inject constructor(
             }
         }
 
-        navigator.buildFragmentDestinationByTag("", "")
     }
 
     fun onNavigateButtonPress() {
-        navigator.navigateToTarget(NavigationTarget.PropertyFragment, "any-payload-here")
+        navigator.navigate(
+            navigationTarget = NavigationTarget.PropertyFragmentTarget()
+        )
     }
 
 

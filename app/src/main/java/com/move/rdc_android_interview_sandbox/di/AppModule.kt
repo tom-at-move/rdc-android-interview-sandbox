@@ -1,7 +1,7 @@
 package com.move.rdc_android_interview_sandbox.di
 
-import com.move.rdc_android_interview_sandbox.Navigator
-import com.move.rdc_android_interview_sandbox.NavigatorImpl
+import com.move.rdc_android_interview_sandbox.common.ui.RDCNavigator
+import com.move.rdc_android_interview_sandbox.common.ui.RDCNavigatorImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -14,8 +14,8 @@ class AppModule {
 
     @Provides
     @Singleton
-    fun provideNavigator(): Navigator {
-        return NavigatorImpl()
+    fun provideNavigator(): RDCNavigator {
+        return RDCNavigatorImpl()
     }
 
 }

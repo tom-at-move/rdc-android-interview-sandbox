@@ -14,7 +14,7 @@ class PropertyFragment : ComposeFragmentHarness() {
     private val vm: PropertyVM by viewModels()
 
     @Composable
-    override fun ComposeViewBinder() {
+    override fun renderComposeView() {
 
         Column {
 
@@ -27,8 +27,22 @@ class PropertyFragment : ComposeFragmentHarness() {
             ) {
                 Text("Click me")
             }
+
+            Button(
+                onClick = {
+                    vm.navigateToDemoComposeFragment()
+                }
+            ) {
+                Text("Navigate to demo fragment")
+            }
         }
 
+    }
+
+    companion object {
+        fun newInstance(): PropertyFragment {
+            return PropertyFragment()
+        }
     }
 
 }

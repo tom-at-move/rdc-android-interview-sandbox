@@ -12,7 +12,7 @@ import androidx.fragment.app.Fragment
 abstract class ComposeFragmentHarness: Fragment() {
 
     @Composable
-    abstract fun ComposeViewBinder()
+    abstract fun renderComposeView()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -21,7 +21,7 @@ abstract class ComposeFragmentHarness: Fragment() {
     ): View {
         return ComposeView(requireContext()).apply {
             setContent {
-                ComposeViewBinder()
+                renderComposeView()
             }
         }
     }

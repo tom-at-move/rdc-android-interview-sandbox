@@ -5,7 +5,9 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class RecyclerViewActivity : AppCompatActivity() {
 
     private lateinit var recyclerView: RecyclerView

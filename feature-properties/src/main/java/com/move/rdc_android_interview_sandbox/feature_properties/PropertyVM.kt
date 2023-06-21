@@ -3,6 +3,8 @@ package com.move.rdc_android_interview_sandbox.feature_properties
 import androidx.constraintlayout.motion.utils.ViewState
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.move.rdc_android_interview_sandbox.common.ui.NavigationTarget
+import com.move.rdc_android_interview_sandbox.common.ui.RDCNavigator
 import com.move.rdc_android_interview_sandbox.data.db.entities.PropertyEntity
 import com.move.rdc_android_interview_sandbox.data.repos.PropertyRepo
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -14,7 +16,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class PropertyVM @Inject constructor(
-    private val propertyRepo: PropertyRepo
+    private val propertyRepo: PropertyRepo,
+    private val navigator: RDCNavigator
 ): ViewModel() {
 
     private val _viewStateFlow = MutableStateFlow<ViewState>(ViewState.Empty)
@@ -25,6 +28,12 @@ class PropertyVM @Inject constructor(
                 propertyRepo.syncProperties()
             }
         }
+    }
+
+    fun navigateToDemoComposeFragment() {
+        navigator.navigate(
+            navigationTarget = NavigationTarget.DemoFragmentTarget()
+        )
     }
 
     sealed class ViewState {
