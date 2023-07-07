@@ -8,7 +8,7 @@ import androidx.compose.ui.tooling.preview.Preview
 @Composable
 fun GoodbyeWorldComponent() {
     Column {
-        Text("Goodbye Multi-Module World")
+        Text("Goodbye Single-Module World")
     }
 }
 
