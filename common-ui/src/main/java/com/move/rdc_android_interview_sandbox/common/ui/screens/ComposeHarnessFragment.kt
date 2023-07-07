@@ -9,7 +9,7 @@ import androidx.compose.ui.platform.ComposeView
 import androidx.fragment.app.Fragment
 
 
-abstract class ComposeFragmentHarness: Fragment() {
+abstract class ComposeHarnessFragment: Fragment() {
 
     @Composable
     abstract fun renderComposeView()

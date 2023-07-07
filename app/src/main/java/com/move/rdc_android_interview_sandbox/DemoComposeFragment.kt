@@ -1,10 +1,6 @@
 package com.move.rdc_android_interview_sandbox
 
-import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.lazy.LazyColumn
@@ -16,30 +12,21 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.ComposeView
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.move.rdc_android_interview_sandbox.common.ui.components.EditTextComponent
 import com.move.rdc_android_interview_sandbox.common.ui.components.GoodbyeWorldComponent
 import com.move.rdc_android_interview_sandbox.common.ui.components.HelloWorldComponent
+import com.move.rdc_android_interview_sandbox.common.ui.screens.ComposeHarnessFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class DemoComposeFragment : Fragment() {
+class DemoComposeFragment : ComposeHarnessFragment() {
 
     private val vm: DemoComposeFragmentVM by viewModels()
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-
-        return ComposeView(requireContext()).apply {
-            setContent {
-                DemoComposeFragmentScreen()
-            }
-        }
+    @Composable
+    override fun renderComposeView() {
+        DemoComposeFragmentScreen()
     }
 
     @Composable

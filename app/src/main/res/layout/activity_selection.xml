@@ -7,6 +7,17 @@
     android:paddingHorizontal="16dp"
     >
 
+    <Button
+        android:id="@+id/fragment_activity_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="Fragment Activity"
+        app:layout_constraintVertical_chainStyle="packed"
+        app:layout_constraintTop_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/compose_activity_button"
+        />
 
     <Button
         android:id="@+id/compose_activity_button"
@@ -16,19 +27,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:text="Compose Activity"
         app:layout_constraintVertical_chainStyle="packed"
-        app:layout_constraintTop_toBottomOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/fragment_activity_button"
-        />
-
-    <Button
-        android:id="@+id/fragment_activity_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:text="Fragment Activity"
-        app:layout_constraintVertical_chainStyle="packed"
-        app:layout_constraintTop_toBottomOf="@id/compose_activity_button"
+        app:layout_constraintTop_toBottomOf="@id/fragment_activity_button"
         app:layout_constraintBottom_toTopOf="@id/view_activity_button"
         />
 
@@ -39,7 +38,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:text="Recycler View Activity"
-        app:layout_constraintTop_toBottomOf="@+id/fragment_activity_button"
+        app:layout_constraintTop_toBottomOf="@+id/compose_activity_button"
         app:layout_constraintBottom_toTopOf="parent"
         />
 

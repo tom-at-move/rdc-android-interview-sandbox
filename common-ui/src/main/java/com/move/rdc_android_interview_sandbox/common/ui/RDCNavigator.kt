@@ -29,8 +29,8 @@ class RDCNavigatorImpl : RDCNavigator {
 }
 
 sealed class NavigationTarget(
-    val isEntryPoint: Boolean = false
+    open val isEntryPoint: Boolean = false
 ) {
-    class PropertyFragmentTarget(isEntryPoint: Boolean = false) : NavigationTarget(isEntryPoint)
-    class DemoFragmentTarget(isEntryPoint: Boolean = false) : NavigationTarget(isEntryPoint)
+    data class PropertyFragmentTarget(override val isEntryPoint: Boolean = false) : NavigationTarget(isEntryPoint)
+    data class DemoFragmentTarget(override val isEntryPoint: Boolean = false) : NavigationTarget(isEntryPoint)
 }
