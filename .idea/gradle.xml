@@ -14,6 +14,7 @@
             <option value="$PROJECT_DIR$/common-data" />
             <option value="$PROJECT_DIR$/common-ui" />
             <option value="$PROJECT_DIR$/feature-properties" />
+            <option value="$PROJECT_DIR$/feature-t-detail" />
           </set>
         </option>
       </GradleProjectSettings>

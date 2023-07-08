@@ -50,10 +50,9 @@ class DemoComposeFragmentVM @Inject constructor(
 
     fun onNavigateButtonPress() {
         navigator.navigate(
-            navigationTarget = NavigationTarget.PropertyFragmentTarget()
+            navigationTarget = NavigationTarget.TDetailFragmentTarget()
         )
     }
-
 
     sealed class ViewState {
         object Empty : ViewState()

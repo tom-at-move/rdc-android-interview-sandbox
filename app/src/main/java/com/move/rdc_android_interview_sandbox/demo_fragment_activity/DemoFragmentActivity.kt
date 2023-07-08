@@ -9,6 +9,7 @@ import com.move.rdc_android_interview_sandbox.R
 import com.move.rdc_android_interview_sandbox.common.ui.NavigationTarget
 import com.move.rdc_android_interview_sandbox.databinding.ActivityDemoFragmentBinding
 import com.move.rdc_android_interview_sandbox.feature_properties.PropertyFragment
+import com.tomdroid.interviews.feature_t_detail.TDetailFragment
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collectLatest
@@ -30,10 +31,10 @@ class DemoFragmentActivity: FragmentActivity() {
         lifecycleScope.launch {
             withContext(Dispatchers.IO) {
 
-                vm.navigationTargetStateFlow()
-                    .collectLatest { theLocation ->
+                vm.screenBackStackStateFlow()
+                    .collectLatest { theCurrentBackStack: ArrayDeque<NavigationTarget> ->
 
-                        val destinationFragment = when (theLocation) {
+                        val destinationFragment = when (theCurrentBackStack.firstOrNull()) {
 
                             is NavigationTarget.DemoFragmentTarget -> {
                                 DemoComposeFragment.newInstance()
@@ -43,22 +44,41 @@ class DemoFragmentActivity: FragmentActivity() {
                                 PropertyFragment.newInstance()
                             }
 
+                            is NavigationTarget.TDetailFragmentTarget -> {
+                                TDetailFragment()
+                            }
+
+                            null -> {
+                                null
+                            }
                         }
 
-                        val fragmentTransaction = supportFragmentManager.beginTransaction()
 
-                        if (!theLocation.isEntryPoint) { //add to backstack if it's non-entry point fragment
-                            fragmentTransaction.addToBackStack(destinationFragment.tag)
+                        if (destinationFragment != null) {
+                            supportFragmentManager
+                                .beginTransaction()
+                                .replace(
+                                    R.id.fragment_container,
+                                    destinationFragment,
+                                    destinationFragment.tag
+                                )
+                                .commit()
+
                         }
-
-                        fragmentTransaction
-                            .replace(R.id.fragment_container, destinationFragment, destinationFragment.tag)
-                            .commit()
 
                     }
             }
+
         }
 
+    }
+    override fun onBackPressed() {
+
+        vm.onBackPressed()
+
+        if (vm.isBackStackEmpty()) {
+            super.onBackPressed()
+        }
     }
 
 }

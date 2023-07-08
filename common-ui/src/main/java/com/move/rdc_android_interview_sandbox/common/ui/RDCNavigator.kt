@@ -6,26 +6,67 @@ import kotlinx.coroutines.flow.asStateFlow
 
 interface RDCNavigator {
 
-    fun navigationTargetStateFlow(): StateFlow<NavigationTarget>
+    fun setBackStackState(backStackState: ArrayDeque<NavigationTarget>)
+
+    fun navigationTargetBackStackStateFlow(): StateFlow<ArrayDeque<NavigationTarget>>
 
     fun navigate(navigationTarget: NavigationTarget)
+
+    fun onBackPressed(): Boolean
+
+    fun isBackStackEmpty(): Boolean
+
+    fun setOnBackStackEmptyListener(onBackStackEmpty: (Boolean) -> Unit)
+
 }
 
 class RDCNavigatorImpl : RDCNavigator {
 
-    private val _navigationTargetFlow = MutableStateFlow<NavigationTarget>(
-        NavigationTarget.DemoFragmentTarget(
-            isEntryPoint = true
-        )
+    private var _backstackEmptyListener: ((Boolean) -> Unit)? = null
+
+    private val _screenBackStackFlow = MutableStateFlow(
+        ArrayDeque<NavigationTarget>().apply {
+
+
+            addFirst(
+                NavigationTarget.DemoFragmentTarget(
+                    isEntryPoint = true
+                )
+            )
+        }
     )
 
-    override fun navigationTargetStateFlow(): StateFlow<NavigationTarget> {
-        return _navigationTargetFlow.asStateFlow()
-    }
-    override fun navigate(navigationTarget: NavigationTarget) {
-        _navigationTargetFlow.value = navigationTarget
+
+    override fun navigationTargetBackStackStateFlow(): StateFlow<ArrayDeque<NavigationTarget>> {
+        return _screenBackStackFlow.asStateFlow()
     }
 
+    override fun navigate(navigationTarget: NavigationTarget) {
+
+        val backStackStateClone = ArrayDeque(_screenBackStackFlow.value).apply { addFirst(navigationTarget) }
+        _screenBackStackFlow.value = backStackStateClone
+
+    }
+
+    override fun onBackPressed(): Boolean {
+        val backStackStateClone = ArrayDeque(_screenBackStackFlow.value).apply { removeFirst() }
+
+        _screenBackStackFlow.value = backStackStateClone
+        _backstackEmptyListener?.invoke(_screenBackStackFlow.value.isEmpty())
+        return backStackStateClone.isEmpty()
+    }
+
+    override fun setBackStackState(backStackState: ArrayDeque<NavigationTarget>) {
+        _screenBackStackFlow.value = backStackState
+    }
+
+    override fun isBackStackEmpty(): Boolean {
+        return _screenBackStackFlow.value.isEmpty()
+    }
+
+    override fun setOnBackStackEmptyListener(onBackStackEmpty: (Boolean) -> Unit) {
+        _backstackEmptyListener = onBackStackEmpty
+    }
 }
 
 sealed class NavigationTarget(
@@ -33,4 +74,5 @@ sealed class NavigationTarget(
 ) {
     data class PropertyFragmentTarget(override val isEntryPoint: Boolean = false) : NavigationTarget(isEntryPoint)
     data class DemoFragmentTarget(override val isEntryPoint: Boolean = false) : NavigationTarget(isEntryPoint)
+    data class TDetailFragmentTarget(override val isEntryPoint: Boolean = false) : NavigationTarget(isEntryPoint)
 }

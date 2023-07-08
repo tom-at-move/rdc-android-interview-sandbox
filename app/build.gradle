@@ -49,6 +49,7 @@ dependencies {
     implementation project(path: ':common-ui')
     implementation project(path: ':common-data')
     implementation project(path: ':feature-properties')
+    implementation project(path: ':feature-t-detail')
 
 
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
