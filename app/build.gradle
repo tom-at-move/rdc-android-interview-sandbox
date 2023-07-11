@@ -50,6 +50,8 @@ dependencies {
     implementation project(path: ':common-data')
     implementation project(path: ':feature-properties')
     implementation project(path: ':feature-t-detail')
+    implementation project(path: ':feature-a')
+    implementation project(path: ':feature-b')
 
 
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'

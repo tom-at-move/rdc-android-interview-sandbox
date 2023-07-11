@@ -9,6 +9,8 @@ import com.move.rdc_android_interview_sandbox.R
 import com.move.rdc_android_interview_sandbox.common.ui.NavigationTarget
 import com.move.rdc_android_interview_sandbox.databinding.ActivityDemoFragmentBinding
 import com.move.rdc_android_interview_sandbox.feature_properties.PropertyFragment
+import com.tomdroid.interviews.feature_a.FeatureAFragment
+import com.tomdroid.interviews.feature_b.FeatureBFragment
 import com.tomdroid.interviews.feature_t_detail.TDetailFragment
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
@@ -17,11 +19,11 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 @AndroidEntryPoint
-class DemoFragmentActivity: FragmentActivity() {
+class MainNavigatorActivity: FragmentActivity() {
 
     private lateinit var binding: ActivityDemoFragmentBinding
 
-    private val vm: DemoFragmentActivityVM by viewModels()
+    private val vm: MainNavigatorActivityVM by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,9 +50,17 @@ class DemoFragmentActivity: FragmentActivity() {
                                 TDetailFragment()
                             }
 
+                            is NavigationTarget.FeatureAFragmentTarget -> {
+                                FeatureAFragment()
+                            }
+                            is NavigationTarget.FeatureBFragmentTarget -> {
+                                FeatureBFragment()
+                            }
+
                             null -> {
                                 null
                             }
+
                         }
 
 

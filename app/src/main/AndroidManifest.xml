@@ -23,9 +23,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ComposeDemoActivity" />
-        <activity android:name=".RecyclerViewActivity" />
-        <activity android:name=".demo_fragment_activity.DemoFragmentActivity" />
+        <activity android:name=".demo_fragment_activity.MainNavigatorActivity" />
 
     </application>
 

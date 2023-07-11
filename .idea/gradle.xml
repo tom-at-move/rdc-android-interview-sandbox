@@ -13,8 +13,11 @@
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/common-data" />
             <option value="$PROJECT_DIR$/common-ui" />
+            <option value="$PROJECT_DIR$/feature-a" />
+            <option value="$PROJECT_DIR$/feature-b" />
             <option value="$PROJECT_DIR$/feature-properties" />
             <option value="$PROJECT_DIR$/feature-t-detail" />
+            <option value="$PROJECT_DIR$/shared-a-b" />
           </set>
         </option>
       </GradleProjectSettings>

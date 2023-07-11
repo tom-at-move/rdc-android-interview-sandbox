@@ -7,14 +7,14 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class DemoFragmentActivityVM @Inject constructor(
+class MainNavigatorActivityVM @Inject constructor(
     private val navigator: RDCNavigator
 ) : ViewModel() {
 
     init {
         navigator.setBackStackState(
             backStackState = ArrayDeque<NavigationTarget>().apply {
-                addFirst(NavigationTarget.DemoFragmentTarget())
+                addFirst(NavigationTarget.FeatureAFragmentTarget())
             }
         )
     }

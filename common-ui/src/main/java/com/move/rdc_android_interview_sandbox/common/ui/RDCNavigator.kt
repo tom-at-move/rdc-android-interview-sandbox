@@ -27,11 +27,8 @@ class RDCNavigatorImpl : RDCNavigator {
     private val _screenBackStackFlow = MutableStateFlow(
         ArrayDeque<NavigationTarget>().apply {
 
-
             addFirst(
-                NavigationTarget.DemoFragmentTarget(
-                    isEntryPoint = true
-                )
+                NavigationTarget.FeatureAFragmentTarget()
             )
         }
     )
@@ -69,10 +66,14 @@ class RDCNavigatorImpl : RDCNavigator {
     }
 }
 
-sealed class NavigationTarget(
-    open val isEntryPoint: Boolean = false
-) {
-    data class PropertyFragmentTarget(override val isEntryPoint: Boolean = false) : NavigationTarget(isEntryPoint)
-    data class DemoFragmentTarget(override val isEntryPoint: Boolean = false) : NavigationTarget(isEntryPoint)
-    data class TDetailFragmentTarget(override val isEntryPoint: Boolean = false) : NavigationTarget(isEntryPoint)
+sealed class NavigationTarget {
+    class PropertyFragmentTarget : NavigationTarget()
+    class DemoFragmentTarget : NavigationTarget()
+
+    class FeatureAFragmentTarget: NavigationTarget()
+
+    class FeatureBFragmentTarget: NavigationTarget()
+    data class TDetailFragmentTarget(
+        val detailId: String? = null
+    ) : NavigationTarget()
 }
