@@ -12,6 +12,8 @@ interface PropertyRepo {
     suspend fun syncProperties()
     fun observeProperties(): Flow<List<PropertyEntity>>
 
+    fun deleteAll()
+
 }
 
 class PropertyRepoImpl @Inject constructor(
@@ -44,10 +46,13 @@ class PropertyRepoImpl @Inject constructor(
             //error-handling or retry logic here
         }
 
-
     }
 
     override fun observeProperties(): Flow<List<PropertyEntity>> {
         return propertyDao.getAll()
+    }
+
+    override fun deleteAll() {
+        propertyDao.deleteAll()
     }
 }

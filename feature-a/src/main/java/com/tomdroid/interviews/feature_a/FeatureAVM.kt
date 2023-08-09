@@ -19,9 +19,15 @@ class FeatureAVM @Inject constructor(
         sharedABManager.setInputTextState(text)
     }
 
-    fun navigateClicked() {
+    fun navigateToBClicked() {
         navigator.navigate(
             navigationTarget = NavigationTarget.FeatureBFragmentTarget()
+        )
+    }
+
+    fun navigateToPropertyList() {
+        navigator.navigate(
+            navigationTarget = NavigationTarget.PropertyListFragmentTarget()
         )
     }
 

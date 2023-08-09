@@ -8,6 +8,7 @@ import com.move.rdc_android_interview_sandbox.data.models.PropertiesResponse
 import com.move.rdc_android_interview_sandbox.data.network.PropertyApi
 import com.move.rdc_android_interview_sandbox.data.repos.PropertyRepo
 import com.move.rdc_android_interview_sandbox.data.repos.PropertyRepoImpl
+import com.move.rdc_android_interview_sandbox.feature_properties.PropertyListFragmentVM
 import io.mockk.coEvery
 import io.mockk.mockk
 import io.mockk.verify
@@ -22,10 +23,10 @@ import org.junit.Test
 import retrofit2.Response
 
 @OptIn(ExperimentalCoroutinesApi::class)
-class DemoComposeFragmentVMTest {
+class PropertyListFragmentVMTest {
 
 
-    private lateinit var sut: DemoComposeFragmentVM
+    private lateinit var sut: PropertyListFragmentVM
     private val mockPropertyApi: PropertyApi = mockk(relaxed = true)
     private val mockDao: PropertyDao = mockk(relaxed = true)
     private val mockNavigator: RDCNavigator = mockk(relaxed = true)
@@ -39,7 +40,7 @@ class DemoComposeFragmentVMTest {
         val testDispatcher = StandardTestDispatcher(testScheduler)
         Dispatchers.setMain(testDispatcher)
 
-        sut = DemoComposeFragmentVM(
+        sut = PropertyListFragmentVM(
             propertyRepo = mockPropertyRepo,
             navigator = mockNavigator
         )
@@ -48,10 +49,10 @@ class DemoComposeFragmentVMTest {
         coEvery { mockPropertyApi.getProperties() } returns Response.success(PropertiesResponse(listOf()))
 
         sut.viewStateFlow().test {
-            assertEquals(DemoComposeFragmentVM.ViewState.Empty, awaitItem())
+            assertEquals(PropertyListFragmentVM.ViewState.Empty, awaitItem())
             sut.onFetchButtonPress()
-            assertEquals(DemoComposeFragmentVM.ViewState.Loading, awaitItem())
-            assertEquals(DemoComposeFragmentVM.ViewState.Content(listOf()), awaitItem())
+            assertEquals(PropertyListFragmentVM.ViewState.Loading, awaitItem())
+            assertEquals(PropertyListFragmentVM.ViewState.Content(listOf()), awaitItem())
             expectNoEvents()
         }
     }
@@ -61,7 +62,7 @@ class DemoComposeFragmentVMTest {
         val testDispatcher = StandardTestDispatcher(testScheduler)
         Dispatchers.setMain(testDispatcher)
 
-        sut = DemoComposeFragmentVM(
+        sut = PropertyListFragmentVM(
             propertyRepo = mockPropertyRepo,
             navigator = mockNavigator
         )

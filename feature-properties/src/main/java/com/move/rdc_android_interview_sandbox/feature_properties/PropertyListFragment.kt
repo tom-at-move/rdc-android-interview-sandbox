@@ -1,4 +1,4 @@
-package com.move.rdc_android_interview_sandbox
+package com.move.rdc_android_interview_sandbox.feature_properties
 
 import android.util.Log
 import androidx.compose.foundation.layout.Column
@@ -11,6 +11,7 @@ import androidx.compose.material3.Snackbar
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.fragment.app.viewModels
 import com.move.rdc_android_interview_sandbox.common.ui.components.EditTextComponent
@@ -20,20 +21,21 @@ import com.move.rdc_android_interview_sandbox.common.ui.screens.ComposeHarnessFr
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class DemoComposeFragment : ComposeHarnessFragment() {
+class PropertyListFragment : ComposeHarnessFragment() {
 
-    private val vm: DemoComposeFragmentVM by viewModels()
+    private val vm: PropertyListFragmentVM by viewModels()
 
     @Composable
     override fun renderComposeView() {
-        DemoComposeFragmentScreen()
+        PropertyListFragmentScreen()
     }
 
     @Composable
-    fun DemoComposeFragmentScreen() {
+    fun PropertyListFragmentScreen() {
 
         Column(
-            modifier = Modifier.fillMaxSize()
+            modifier = Modifier.fillMaxSize(),
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
 
             Button(
@@ -48,17 +50,19 @@ class DemoComposeFragment : ComposeHarnessFragment() {
 
             Button(
                 onClick = {
-                    vm.onNavigateButtonPress()
+                    vm.onDeleteAll()
                 }
             ) {
                 Text(
-                    text="Sample Navigation"
+                    text="Delete All"
                 )
             }
 
-            when (val viewState = vm.viewStateFlow().collectAsState().value) {
 
-                is DemoComposeFragmentVM.ViewState.Content -> {
+
+            when (val viewState: PropertyListFragmentVM.ViewState = vm.viewStateFlow().collectAsState().value) {
+
+                is PropertyListFragmentVM.ViewState.Content -> {
                     LazyColumn {
                         items(viewState.propertyEntities) {
                             Text(text = it.address.line)
@@ -66,11 +70,11 @@ class DemoComposeFragment : ComposeHarnessFragment() {
                     }
                 }
 
-                DemoComposeFragmentVM.ViewState.Loading -> {
+                PropertyListFragmentVM.ViewState.Loading -> {
                     CircularProgressIndicator()
                 }
 
-                DemoComposeFragmentVM.ViewState.Empty -> {
+                PropertyListFragmentVM.ViewState.Empty -> {
                     HelloWorldComponent()
                     GoodbyeWorldComponent()
                     EditTextComponent(
@@ -80,7 +84,7 @@ class DemoComposeFragment : ComposeHarnessFragment() {
                     )
                 }
 
-                DemoComposeFragmentVM.ViewState.SyncError -> {
+                PropertyListFragmentVM.ViewState.SyncError -> {
                     Snackbar {
                         Text(text ="Error")
                     }
@@ -91,8 +95,8 @@ class DemoComposeFragment : ComposeHarnessFragment() {
     }
 
     companion object {
-        fun newInstance(): DemoComposeFragment {
-            return DemoComposeFragment()
+        fun newInstance(): PropertyListFragment {
+            return PropertyListFragment()
         }
     }
 

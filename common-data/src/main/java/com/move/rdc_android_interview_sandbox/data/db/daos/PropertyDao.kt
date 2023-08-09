@@ -15,4 +15,7 @@ interface PropertyDao {
     @Query("SELECT * FROM PropertyEntity")
     fun getAll(): Flow<List<PropertyEntity>>
 
+    @Query("DELETE FROM PropertyEntity")
+    fun deleteAll()
+
 }

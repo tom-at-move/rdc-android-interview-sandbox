@@ -1,6 +1,5 @@
 package com.move.rdc_android_interview_sandbox.feature_properties
 
-import androidx.constraintlayout.motion.utils.ViewState
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.move.rdc_android_interview_sandbox.common.ui.NavigationTarget
@@ -32,7 +31,7 @@ class PropertyVM @Inject constructor(
 
     fun navigateToDemoComposeFragment() {
         navigator.navigate(
-            navigationTarget = NavigationTarget.DemoFragmentTarget()
+            navigationTarget = NavigationTarget.PropertyListFragmentTarget()
         )
     }
 

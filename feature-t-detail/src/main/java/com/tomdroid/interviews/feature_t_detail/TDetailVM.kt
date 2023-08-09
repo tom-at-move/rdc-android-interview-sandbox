@@ -13,7 +13,7 @@ class TDetailVM @Inject constructor(
 
     fun navigateClicked() {
         navigator.navigate(
-            navigationTarget = NavigationTarget.DemoFragmentTarget()
+            navigationTarget = NavigationTarget.PropertyListFragmentTarget()
         )
     }
 

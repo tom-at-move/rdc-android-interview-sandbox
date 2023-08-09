@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.lifecycleScope
-import com.move.rdc_android_interview_sandbox.DemoComposeFragment
+import com.move.rdc_android_interview_sandbox.feature_properties.PropertyListFragment
 import com.move.rdc_android_interview_sandbox.R
 import com.move.rdc_android_interview_sandbox.common.ui.NavigationTarget
 import com.move.rdc_android_interview_sandbox.databinding.ActivityDemoFragmentBinding
@@ -38,16 +38,12 @@ class MainNavigatorActivity: FragmentActivity() {
 
                         val destinationFragment = when (theCurrentBackStack.firstOrNull()) {
 
-                            is NavigationTarget.DemoFragmentTarget -> {
-                                DemoComposeFragment.newInstance()
+                            is NavigationTarget.PropertyListFragmentTarget -> {
+                                PropertyListFragment.newInstance()
                             }
 
                             is NavigationTarget.PropertyFragmentTarget -> {
                                 PropertyFragment.newInstance()
-                            }
-
-                            is NavigationTarget.TDetailFragmentTarget -> {
-                                TDetailFragment()
                             }
 
                             is NavigationTarget.FeatureAFragmentTarget -> {

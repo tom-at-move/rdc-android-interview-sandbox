@@ -68,12 +68,10 @@ class RDCNavigatorImpl : RDCNavigator {
 
 sealed class NavigationTarget {
     class PropertyFragmentTarget : NavigationTarget()
-    class DemoFragmentTarget : NavigationTarget()
+    class PropertyListFragmentTarget : NavigationTarget()
 
     class FeatureAFragmentTarget: NavigationTarget()
 
     class FeatureBFragmentTarget: NavigationTarget()
-    data class TDetailFragmentTarget(
-        val detailId: String? = null
-    ) : NavigationTarget()
+
 }

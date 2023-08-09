@@ -6,6 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.ComposeView
+import androidx.compose.ui.platform.ViewCompositionStrategy
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.fragment.app.Fragment
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -16,6 +18,7 @@ abstract class ComposeHarnessFragment: Fragment() {
     @Composable
     abstract fun renderComposeView()
 
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -23,6 +26,7 @@ abstract class ComposeHarnessFragment: Fragment() {
     ): View {
         return ComposeView(requireContext()).apply {
             setContent {
+                setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed)
                 renderComposeView()
             }
         }
