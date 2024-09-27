@@ -1,2 +1,5 @@
 rootProject.name = "rdc-android-interview-sandbox"
 include ':app'
+include ':common-ui'
+include ':common-data'
+include ':feature-properties'
